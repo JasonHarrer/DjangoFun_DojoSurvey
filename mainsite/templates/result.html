@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Dojo Survey results">
+        <title>Dojo Survey results</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    </head>
+    <body>
+        <h1>Dojo Survey</h1>
+        <h2>Results</h2>
+        <fieldset>
+            <legend>Submitted info</legend>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="label">
+                            <label>Name:</label>
+                        </td>
+                        <td class="input">{{name}}</td>
+                    </tr>
+                    <tr>
+                        <td class="label">
+                            <label>Dojo Location:</label>
+                        </td>
+                        <td class="input">{{location}}</td>
+                    </tr>
+                    <tr>
+                        <td class="label">
+                            <label>Favorite Language(s):</label>
+                        </td>
+                        <td class="input">
+                            <ul>
+                            {% for lang in languages %}
+                                <li>{{lang}}</li>
+                            {% endfor %}
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        {% if comments is not None %}
+                            <td class="label">
+                                <label>Comments:</label>
+                            </td>
+                            <td class="input">{{comments}}</td>
+                        {% endif %}
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+    </body>
+</html>

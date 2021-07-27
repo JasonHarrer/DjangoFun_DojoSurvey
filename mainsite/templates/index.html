@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Dojo Survey">
+        <title>Dojo Survey</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/index.css' %}"
+    </head>
+    <body>
+        <h1>Dojo Survey</h1>
+        <form method="POST" action="/result">
+            {% csrf_token %}
+            <fieldset>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="label">
+                                <label for="name">Your name:</label>
+                            </td>
+                            <td class="input">
+                                <input type="text" name="name" id="name">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">
+                                <label>Dojo Location:</label>
+                            </td>
+                            <td class="input group_input">
+                                {% for key, value in locations.items %}
+                                    <span class="location">
+                                        <input type="radio" id="loc_{{key}}" name="location" value="{{key}}">
+                                        <label for="loc_{{key}}">{{value}}</label>
+                                    </span>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">
+                                <label>Favorite Language(s):</label>
+                            </td>
+                            <td class="input group_input">
+                                {% for language in languages %}
+                                    <span class="language">
+                                        <input type="checkbox" id="lang_{{language}}", name="languages", value="{{language}}">
+                                        <label for="lang_{{language}}">{{language}}</label>
+                                    </span>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label">
+                                <label for="comments">Comment (optional):</label>
+                            </td>
+                            <td class="input">
+                                <textarea name="comments" id="comments"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="label"> </td>
+                            <td class="input">
+                                <input type="submit" id="submit">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+        </form>
+    </body>
+</html>

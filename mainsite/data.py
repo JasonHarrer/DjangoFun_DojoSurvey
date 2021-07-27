@@ -1,0 +1,42 @@
+locations = {
+                "Bellevue":      "Bellevue, WA",
+                "Boise":         "Boise, ID",
+                "Chicago":       "Chicago, IL",
+                "LosAngeles":    "Los Angeles, CA",
+                "SiliconValley": "Silicon Valley, CA",
+                "Online":        "Online"
+            }
+
+languages = [
+              "ADA",
+              "Algol",
+              "BASIC",
+              "C",
+              "C++",
+              "C#",
+              "COBOL",
+              "Clojure",
+              "Elm",
+              "Erlang",
+              "F#",
+              "Fortran",
+              "Go",
+              "Haskell",
+              "Java",
+              "JavaScript",
+              "Kotlin",
+              "Lisp",
+              "ML",
+              "Nim",
+              "OCaml",
+              "Pascal",
+              "PureScript",
+              "Python",
+              "R",
+              "Racket",
+              "Rust",
+              "Scala",
+              "Scheme",
+              "Swift",
+              "TypeScript"
+            ]
