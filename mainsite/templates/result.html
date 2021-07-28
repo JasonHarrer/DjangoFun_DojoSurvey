@@ -18,13 +18,13 @@
                         <td class="label">
                             <label>Name:</label>
                         </td>
-                        <td class="input">{{name}}</td>
+                        <td class="input">{{request.session.name}}</td>
                     </tr>
                     <tr>
                         <td class="label">
                             <label>Dojo Location:</label>
                         </td>
-                        <td class="input">{{location}}</td>
+                        <td class="input">{{request.session.location}}</td>
                     </tr>
                     <tr>
                         <td class="label">
@@ -32,18 +32,18 @@
                         </td>
                         <td class="input">
                             <ul>
-                            {% for lang in languages %}
+                            {% for lang in request.session.languages %}
                                 <li>{{lang}}</li>
                             {% endfor %}
                             </ul>
                         </td>
                     </tr>
                     <tr>
-                        {% if comments is not None %}
+                        {% if request.session.comments is not None %}
                             <td class="label">
                                 <label>Comments:</label>
                             </td>
-                            <td class="input">{{comments}}</td>
+                            <td class="input">{{request.session.comments}}</td>
                         {% endif %}
                     </tr>
                 </tbody>

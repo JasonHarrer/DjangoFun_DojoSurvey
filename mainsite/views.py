@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponseNotAllowed
 from . import data
 
@@ -11,15 +11,18 @@ def index(request):
               }
     return render(request, "index.html", context)
 
-def result(request):
+
+def process_dojo_survey(request):
     if request.method != 'POST':
         return HttpResponseNotAllowed(['POST'], 'Error: This page is only used to process form results.  Calling it directly via a GET request is not allowed.') 
-    context = {
-                'name':      request.POST['name'],
-                'location':  request.POST['location'],
-                'languages': request.POST.getlist('languages'),
-                'comments':  request.POST['comments']
-              }
-    if context['comments'] == '':
-        context['comments'] = None
-    return render(request, "result.html", context)
+    request.session['name']      = request.POST['name']
+    request.session['location']  = request.POST['location']
+    request.session['languages'] = request.POST.getlist('languages')
+    request.session['comments']  =  request.POST['comments']
+    if request.session['comments'] == '':
+        request.session['comments'] = None
+    return redirect('/result')
+
+
+def result(request):
+    return render(request, "result.html")
